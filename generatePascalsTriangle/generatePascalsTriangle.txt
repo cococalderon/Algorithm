@@ -1,0 +1,20 @@
+func generatePascalsTriangle(_ numRows: Int) -> [[Int]] {
+    if numRows == 0 {
+        return []
+    }
+ 
+    var result: [[Int]] = [[1]]
+    
+    for i in 1..<numRows {
+        var row = [Int]()
+        let prevRow = result[i - 1]
+        
+        row.append(1)
+        for j in 1..<i {
+            row.append(prevRow[j - 1] + prevRow[j])
+        }
+        row.append(1)
+        result.append(row)
+    }
+    return result
+}
